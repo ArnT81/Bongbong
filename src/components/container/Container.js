@@ -1,12 +1,12 @@
 import React from 'react';
-import Sidebar from '../sidebar/Sidebar'
+import FormComponent from '../formComponent/FormComponent'
 import Response from '../response/Response'
 import styles from '../container/container.module.css'
 
 const Container = () => {
     return (
         <div className={styles.container}>
-            <Sidebar />
+            <FormComponent />
             <Response />
         </div>
     )

@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from '../sidebar/sidebar.module.css'
+import styles from '../formComponent/formComponent.module.css'
 
-const Sidebar = () => {
+const FormComponent = () => {
     return (
         <div className={styles.sidebar}>
             <h4>Add Student</h4>
@@ -30,4 +30,4 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar;
+export default FormComponent;

@@ -1,9 +1,9 @@
-.sidebar {
+.formComponent {
     position: relative;
     box-sizing: border-box;  
 }
 
-.sidebar>div {
+.formComponent>div {
     display: inline-flex;
     width: 93%;
     align-items: center;
@@ -13,7 +13,7 @@
     border-radius: 3px;
 }
 
-.sidebar>div>input {
+.formComponent>div>input {
     position: absolute;
     right: 10px;
     width: 200px;
@@ -24,7 +24,7 @@
     box-sizing: border-box;
 }
 
-.sidebar>button {
+.formComponent>button {
     position: relative;
     width: 100px;
     height: 26px;
@@ -35,6 +35,6 @@
     color: white;
 }
 
-.sidebar>h4 {
+.formComponent>h4 {
     margin-bottom: 10px; 
 }
