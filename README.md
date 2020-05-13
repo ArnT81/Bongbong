@@ -1,3 +1,80 @@
+## Theoretical part (in swedish)
+
+När man besöker en hemsida i webbläsare så skickas i en "GET" i bakgrunden till den angivna URLn som svarar med en statuskod och skickar tillbaka sitt innehåll till användarens webläsare, ststuskoden som returneras märker normalt inte användaren av om det inte sker ett oväntat fel, servern ligger nere eller man har skickat en dålig förfrågan.
+___
+
+GET
+Hämtar datan från pathen
+
+POST
+Skapar data på pathen
+
+PUT
+Ersätter hela innehållet på positionen i pathen, eller skapar en ny om ingen existerar på den positionen.
+
+PATCH
+Ersätter en eller flera delar av datan på positionen i pathen (om modellen tillåter), eller skapar en ny om ingen existerar på den positionen.
+
+DELETE
+Tar bort en position i den angivna pathen
+___
+    
+http://: Är protokollet som används
+localhost: Är domännamnet
+3000: Är portnumret
+users: Är pathen
+?username=something: är förfrågnings-parametrar 
+___
+
+curl localhost:3000/users?name=arnt
+curl localhost:3000/users;name=arnt
+curl localhost:3000/users -H "name: arnt"
+___
+
+Mycket nytt men väldigt roligt. Kan vara lite svårt att greppa uppgifterna och hitta sin infallsvinkel.
+___
+
+## Practical part
+
+### Backend: 
+Should be able to handle students in a fictional learning management system "BongBong". 
+
+### Frontend: 
+simple React-app that fetch students and present them in a table.
+Every table should contain a delete-button which erase the student.
+A simple form to create new students with following data structure:
+
+students: {
+"_id": "<unikt uuid>
+"email": "pelle.kanin@ecut.com"
+"name": "Pelle kanin",
+"address": {
+   "gata": " Framtidsvägen 10A",
+   "postnummer": "352 57",
+   "ort": "Växjö"   
+   }
+}
+
+And with these methods
+
+/students GET lista alla studenter som en array
+/students/?name=Pelle+kanin hämtar alla studenter med namn
+/students POST skapa en ny student
+/students/{id} GET visa en student
+/students/{id} PUT skapa eller uppdatera en student (response code 201 om skapad, 200 om uppdaterad och 204 om inte ändrad)
+/students/{id} DELETE ta bort en ny student (response code 200 om borta, 204 om inget togs bort)
+
+___
+
+## Backend 
+
+
+
+
+
+
+## Frontend
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

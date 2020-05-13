@@ -1,0 +1,10 @@
+.item {
+    position: relative;
+    background: rgb(0,0,0,0.6);
+    width: 240px;
+    height: 215px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+}

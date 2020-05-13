@@ -1,17 +1,15 @@
 import React from 'react';
-import Requests from '../requests/Requests'
+import Sidebar from '../sidebar/Sidebar'
 import Response from '../response/Response'
 import styles from '../container/container.module.css'
 
 const Container = () => {
     return (
         <div className={styles.container}>
-            <Requests />
+            <Sidebar />
             <Response />
         </div>
     )
-
-
 }
 
 export default Container;

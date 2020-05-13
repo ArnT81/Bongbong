@@ -2,13 +2,21 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
- }
+}
 
- .App>img {
+.App>img {
   position: absolute;
   width: 100vw;
   height: 100vh;
   z-index: 0;
- }
+}
+
+p {
+  color: white;
+  margin: 0px;
+}
+
+h4 {
+  color: white;
+  margin: 0px;
+}
