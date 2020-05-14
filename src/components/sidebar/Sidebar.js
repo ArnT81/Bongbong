@@ -1,15 +1,15 @@
 import React from 'react';
 import FormComponent from '../formComponent/FormComponent'
 import Response from '../response/Response'
-import styles from '../container/container.module.css'
+import styles from '../sidebar/sidebar.module.css'
 
-const Container = () => {
+const Sidebar = () => {
     return (
-        <div className={styles.container}>
+        <div className={styles.sidebar}>
             <FormComponent />
             <Response />
         </div>
     )
 }
 
-export default Container;
+export default Sidebar;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Container from './components/container/Container'
+import Sidebar from './components/sidebar/Sidebar'
 import Item from './components/item/item'
 import background from './media/summer-sun-warmth-field-9568.jpg'
 import './App.css';
@@ -42,14 +42,13 @@ function App() {
     <div className="App">
       <img src={background} alt="By Skitterphoto from Pexels" />
       <Context.Provider value={store}>
-        <Container />
-        <ul>
-          {store.users.get.map((user) =>
-            <Item key={store.users.get.userId}>
-              {user}
-            </Item>
-          )}
-        </ul>
+        <Sidebar />
+        {store.users.get.map((user, index) =>
+          <Item key={index}>
+            {user}
+          </Item>
+        )}
+
 
       </Context.Provider>
     </div>

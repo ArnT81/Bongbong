@@ -11,7 +11,6 @@ const Response = () => {
             <p>city</p>
             <p>street</p>
             <p>zipcode</p>
-            <button>Delete</button>
         </div>
     )
 }

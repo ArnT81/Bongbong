@@ -2,9 +2,20 @@ import React from 'react'
 import styles from '../formComponent/formComponent.module.css'
 
 const FormComponent = () => {
+
+
+
+
+    const addUsert = (e) => {
+        e.preventDefault()
+        // POST, 'http://localhost/users/'
+
+    }
+    
     return (
-        <div className={styles.sidebar}>
+        <div className={styles.formComponent}>
             <h4>Add Student</h4>
+            <form name="form" onSubmit={addUsert}>
             <div>
                 <p>Name</p>
                 <input type="name" name="name" placeholder="name*"></input>
@@ -26,6 +37,7 @@ const FormComponent = () => {
                 <input type="zipcode" name="zipcode" placeholder="zipcode*"></input>
             </div>
             <button>Add</button>
+            </form>
         </div>
     )
 }
