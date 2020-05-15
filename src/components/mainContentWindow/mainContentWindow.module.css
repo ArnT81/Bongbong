@@ -1,0 +1,10 @@
+.mainContentWindow {
+    position: absolute;
+    left: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 82vw;
+    height: 100vh;
+    z-index: 0;
+    box-sizing: border-box;
+}
