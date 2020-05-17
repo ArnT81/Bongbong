@@ -4,27 +4,26 @@ import { Context } from '../../App'
 
 const Item = (props) => {
     const store = useContext(Context)
-    // console.log(store.users)
-    console.log(props.children.address)
+    // console.log('store.users', store.users.get)
+    // console.log('props.children', props.children)
     // const usernumber = props.children.id -1
     // console.log(usernumber)
 
     const deleteUser = (e) => {
         e.preventDefault()
-        const url = "http://localhost:4000/users/"
-        const data = {
-            //    e.target._id
-        }
+
+        console.log(props.children._id)
+        const url = "http://localhost:4000/users/" + props.children._id
+
         const otherParams = {
             method: "DELETE",
-            body: data
-            
+            // body: data
         }
+
         fetch(url, otherParams)
             .then(data => { return data.json() })
             .then(res => { console.log(res) })
             .catch(error => console.log(error))
-
     }
 
     return (

@@ -23,52 +23,53 @@ const FormComponent = () => {
 
     const handleEmail = (e) => {
         handle.email.set(e.target.value);
-        console.log(nameValue)
+        console.log(emailValue)
     }
 
     const handleCity = (e) => {
         handle.city.set(e.target.value);
-        console.log(nameValue)
+        console.log(cityValue)
     }
 
     const handleStreet = (e) => {
         handle.street.set(e.target.value);
-        console.log(nameValue)
+        console.log(streetValue)
     }
 
     const handleZipcode = (e) => {
         handle.zip.set(e.target.value);
-        console.log(nameValue)
+        console.log(zipcodeeValue)
     }
 
     const addUsert = (e) => {
         e.preventDefault()
-        const url = "http://localhost:4000/users/"
         const data = {
-            "name": "handle.name.get",
-            "email": "handle.email.get",
-            "city": "handle.city.get",
-            "street": "handle.street.get",
-            "zipcode": "handle.zip.get"
+            "name": handle.name.get,
+            "email": handle.email.get,
+            "city": handle.city.get,
+            "street": handle.street.get,
+            "zipcode": handle.zip.get
         }
+        const url = "http://localhost:4000/users/" + data
+        
         const otherParams = {
             header: {
                 "Content-Type": "application/json"
             },
             method: "POST",
-            body: data
-            
+            // body: JSON.stringify(data)
         }
+
         fetch(url, otherParams)
             .then(data => { return data.json() })
-            .then(res => { console.log(res) })
+            .then(res => { console.log(data) })
             .catch(error => console.log(error))
     }
 
     return (
         <div className={styles.formComponent}>
             <h4>Add Student</h4>
-            <form name="Student" action="localhost:4000" onSubmit={addUsert}>
+            <form name="Student" onSubmit={addUsert}>
                 <div>
                     <p>Name</p>
                     <input type="name" name="name" onChange={handleName}></input>
