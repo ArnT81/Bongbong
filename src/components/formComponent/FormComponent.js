@@ -1,10 +1,7 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import styles from '../formComponent/formComponent.module.css'
-import { Context } from '../../App'
 
 const FormComponent = () => {
-    const store = useContext(Context)
-
     const [nameValue, setnameValue] = useState('Anders')
     const [emailValue, setemailValue] = useState("anders_soderberg@hotmail.com")
     const [cityValue, setcityValue] = useState("Vislanda")
@@ -46,30 +43,27 @@ const FormComponent = () => {
 
     const addUsert = (e) => {
         e.preventDefault()
-
-        const url = "http://localhost:4000/users/"
         const data = {
-            name: handle.name.get,
-            email: handle.email.get,
-            city: handle.city.get,
-            street: handle.street.get,
-            zipcode: handle.zip.get
+            "name": handle.name.get,
+            "email": handle.email.get,
+            "city": handle.city.get,
+            "street": handle.street.get,
+            "zipcode": handle.zip.get
         }
+        const url = "http://localhost:4000/users/" + data
+        
         const otherParams = {
-            method: "POST",
             header: {
-                "Accept": "application/json",
                 "Content-Type": "application/json"
             },
-
-            body: JSON.stringify({ data })
+            method: "POST",
+            // body: JSON.stringify(data)
         }
 
         fetch(url, otherParams)
             .then(data => { return data.json() })
-            .then(res => { console.log(res) })
+            .then(res => { console.log(data) })
             .catch(error => console.log(error))
-        store.bool.set(false)
     }
 
     return (

@@ -10,11 +10,9 @@ export const Context = React.createContext({})
 
 function App() {
   const [users, setUsers] = useState([{}]);
-  const [boolState, setBoolstate] = useState(false)
 
   const store = {
-    users: { get: users, set: setUsers },
-    bool: {get: boolState, set: setBoolstate}
+    users: { get: users, set: setUsers }
   }
 
   return (

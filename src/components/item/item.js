@@ -4,6 +4,10 @@ import { Context } from '../../App'
 
 const Item = (props) => {
     const store = useContext(Context)
+    // console.log('store.users', store.users.get)
+    // console.log('props.children', props.children)
+    // const usernumber = props.children.id -1
+    // console.log(usernumber)
 
     const deleteUser = (e) => {
         e.preventDefault()
@@ -13,13 +17,13 @@ const Item = (props) => {
 
         const otherParams = {
             method: "DELETE",
+            // body: data
         }
 
         fetch(url, otherParams)
             .then(data => { return data.json() })
             .then(res => { console.log(res) })
             .catch(error => console.log(error))
-        store.bool.set(false)
     }
 
     return (
