@@ -26,7 +26,7 @@ const Item = (props) => {
         <div className={styles.item}>
             <h4>Student</h4>
             <p>{store.users.get.name}</p>
-            <p>user id: {props.children.id}</p>
+            <p>user id: {props.children._id}</p>
             <p>name: {props.children.name}</p>
             <p>email: {props.children.email}</p>
             <h4>Address</h4>

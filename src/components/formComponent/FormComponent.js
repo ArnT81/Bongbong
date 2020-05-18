@@ -5,11 +5,11 @@ import { Context } from '../../App'
 const FormComponent = () => {
     const store = useContext(Context)
 
-    const [nameValue, setnameValue] = useState('Anders')
-    const [emailValue, setemailValue] = useState("anders_soderberg@hotmail.com")
-    const [cityValue, setcityValue] = useState("Vislanda")
-    const [streetValue, setstreetValue] = useState("Movägen")
-    const [zipcodeeValue, setzipcodeeValue] = useState("34250")
+    const [nameValue, setnameValue] = useState('')
+    const [emailValue, setemailValue] = useState('')
+    const [cityValue, setcityValue] = useState('')
+    const [streetValue, setstreetValue] = useState('')
+    const [zipcodeeValue, setzipcodeeValue] = useState('')
 
     const handle = {
         name: { get: nameValue, set: setnameValue },
@@ -18,6 +18,7 @@ const FormComponent = () => {
         street: { get: streetValue, set: setstreetValue },
         zip: { get: zipcodeeValue, set: setzipcodeeValue }
     }
+
     //handleChanges
     const handleName = (e) => {
         handle.name.set(e.target.value);
@@ -48,22 +49,20 @@ const FormComponent = () => {
         e.preventDefault()
 
         const url = "http://localhost:4000/users/"
-        const data = {
-            name: handle.name.get,
-            email: handle.email.get,
-            city: handle.city.get,
-            street: handle.street.get,
-            zipcode: handle.zip.get
-        }
         const otherParams = {
             method: "POST",
-            header: {
+            headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json;charset=UTF-8"
             },
-            body: JSON.stringify({ data })
+            body: JSON.stringify({
+                name: handle.name.get,
+                email: handle.email.get,
+                city: handle.city.get,
+                street: handle.street.get,
+                zipcode: handle.zip.get
+            })
         }
-
         fetch(url, otherParams)
             .then(data => { return data.json() })
             .then(res => { console.log(res) })
