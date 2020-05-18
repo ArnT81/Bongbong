@@ -6,7 +6,7 @@ const GetUsers = () => {
     const store = useContext(Context)
 
     useEffect(() => {
-        if (!store.bool.get) {
+        if (!store.reloadUsers.get) {
             fetch('http://localhost:4000/users')
                 .then((response) => {
                     return response.json();
@@ -14,7 +14,7 @@ const GetUsers = () => {
                 .then((data) => {
                     store.users.set(data)
                 });
-            store.bool.set(true)
+            store.reloadUsers.set(true)
         }
     })
 

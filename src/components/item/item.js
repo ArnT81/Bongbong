@@ -7,10 +7,8 @@ const Item = (props) => {
 
     const deleteUser = (e) => {
         e.preventDefault()
-
-        console.log(props.children._id)
+        store.reloadUsers.set(false)
         const url = "http://localhost:4000/users/" + props.children._id
-
         const otherParams = {
             method: "DELETE",
         }
@@ -19,20 +17,18 @@ const Item = (props) => {
             .then(data => { return data.json() })
             .then(res => { console.log(res) })
             .catch(error => console.log(error))
-        store.bool.set(false)
     }
 
     return (
         <div className={styles.item}>
             <h4>Student</h4>
-            <p>{store.users.get.name}</p>
-            <p>user id: {props.children._id}</p>
-            <p>name: {props.children.name}</p>
-            <p>email: {props.children.email}</p>
+            <p>user id: {props.user._id}</p>
+            <p>name: {props.user.name}</p>
+            <p>email: {props.user.email}</p>
             <h4>Address</h4>
-            <p>city: {props.children.city}</p>
-            <p>street: {props.children.street}</p>
-            <p>zipcode: {props.children.zipcode}</p>
+            <p>city: {props.user.address.city}</p>
+            <p>street: {props.user.address.street}</p>
+            <p>zipcode: {props.user.address.zipcode}</p>
             <button onClick={deleteUser}>Delete</button>
         </div>
     )

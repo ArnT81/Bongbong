@@ -2,14 +2,14 @@ import React, { useState, useContext } from 'react'
 import styles from '../formComponent/formComponent.module.css'
 import { Context } from '../../App'
 
-const FormComponent = () => {
+const FormComponent = (props) => {
     const store = useContext(Context)
-
-    const [nameValue, setnameValue] = useState('')
-    const [emailValue, setemailValue] = useState('')
-    const [cityValue, setcityValue] = useState('')
-    const [streetValue, setstreetValue] = useState('')
-    const [zipcodeeValue, setzipcodeeValue] = useState('')
+    
+    const [nameValue, setnameValue] = useState('Anders Söderberg')
+    const [emailValue, setemailValue] = useState('anders_soderberg@hotmail.com')
+    const [cityValue, setcityValue] = useState('Vislanda')
+    const [streetValue, setstreetValue] = useState('Movägen 8')
+    const [zipcodeeValue, setzipcodeeValue] = useState('342 50')
 
     const handle = {
         name: { get: nameValue, set: setnameValue },
@@ -22,32 +22,27 @@ const FormComponent = () => {
     //handleChanges
     const handleName = (e) => {
         handle.name.set(e.target.value);
-        console.log(nameValue)
     }
 
     const handleEmail = (e) => {
         handle.email.set(e.target.value);
-        console.log(emailValue)
     }
 
     const handleCity = (e) => {
         handle.city.set(e.target.value);
-        console.log(cityValue)
     }
 
     const handleStreet = (e) => {
         handle.street.set(e.target.value);
-        console.log(streetValue)
     }
 
     const handleZipcode = (e) => {
         handle.zip.set(e.target.value);
-        console.log(zipcodeeValue)
     }
-
+ 
     const addUsert = (e) => {
         e.preventDefault()
-
+        store.reloadUsers.set(false)
         const url = "http://localhost:4000/users/"
         const otherParams = {
             method: "POST",
@@ -58,16 +53,17 @@ const FormComponent = () => {
             body: JSON.stringify({
                 name: handle.name.get,
                 email: handle.email.get,
-                city: handle.city.get,
-                street: handle.street.get,
-                zipcode: handle.zip.get
+                address: {
+                    city: handle.city.get,
+                    street: handle.street.get,
+                    zipcode: handle.zip.get
+                }
             })
         }
         fetch(url, otherParams)
             .then(data => { return data.json() })
             .then(res => { console.log(res) })
             .catch(error => console.log(error))
-        store.bool.set(false)
     }
 
     return (
