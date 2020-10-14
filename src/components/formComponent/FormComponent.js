@@ -4,42 +4,20 @@ import { Context } from '../../App'
 
 const FormComponent = (props) => {
     const store = useContext(Context)
-    
-    const [nameValue, setnameValue] = useState('Anders Söderberg')
-    const [emailValue, setemailValue] = useState('anders_soderberg@hotmail.com')
-    const [cityValue, setcityValue] = useState('Vislanda')
-    const [streetValue, setstreetValue] = useState('Movägen 8')
-    const [zipcodeeValue, setzipcodeeValue] = useState('342 50')
 
-    const handle = {
-        name: { get: nameValue, set: setnameValue },
-        email: { get: emailValue, set: setemailValue },
-        city: { get: cityValue, set: setcityValue },
-        street: { get: streetValue, set: setstreetValue },
-        zip: { get: zipcodeeValue, set: setzipcodeeValue }
+    const [value, setValue] = useState({
+        name: 'Anders Söderberg',
+        email: 'anders_soderberg@hotmail.com',
+        city: 'Vislanda',
+        street: 'Movägen 8',
+        zipcode: '342 50'
+    })
+
+    const handleChange = (e) => {
+        console.log(e.target.name, e.target.value)
+        setValue({ ...value, [e.target.name]: e.target.value })
     }
 
-    //handleChanges
-    const handleName = (e) => {
-        handle.name.set(e.target.value);
-    }
-
-    const handleEmail = (e) => {
-        handle.email.set(e.target.value);
-    }
-
-    const handleCity = (e) => {
-        handle.city.set(e.target.value);
-    }
-
-    const handleStreet = (e) => {
-        handle.street.set(e.target.value);
-    }
-
-    const handleZipcode = (e) => {
-        handle.zip.set(e.target.value);
-    }
- 
     const addUsert = (e) => {
         e.preventDefault()
         store.reloadUsers.set(false)
@@ -51,12 +29,12 @@ const FormComponent = (props) => {
                 "Content-Type": "application/json;charset=UTF-8"
             },
             body: JSON.stringify({
-                name: handle.name.get,
-                email: handle.email.get,
+                name: value.name,
+                email: value.email,
                 address: {
-                    city: handle.city.get,
-                    street: handle.street.get,
-                    zipcode: handle.zip.get
+                    city: value.city,
+                    street: value.street,
+                    zipcode: value.zipcode
                 }
             })
         }
@@ -72,23 +50,23 @@ const FormComponent = (props) => {
             <form name="Student" onSubmit={addUsert}>
                 <div>
                     <p>Name</p>
-                    <input type="name" name="name" onChange={handleName}></input>
+                    <input type="name" name="name" onChange={handleChange}></input>
                 </div>
                 <div>
                     <p>Email</p>
-                    <input type="email" name="email" onChange={handleEmail}></input>
+                    <input type="email" name="email" onChange={handleChange}></input>
                 </div>
                 <div>
                     <p>City</p>
-                    <input type="city" name="city" onChange={handleCity}></input>
+                    <input type="city" name="city" onChange={handleChange}></input>
                 </div>
                 <div>
                     <p>Street</p>
-                    <input type="street" name="street" onChange={handleStreet}></input>
+                    <input type="street" name="street" onChange={handleChange}></input>
                 </div>
                 <div>
                     <p>zipcode</p>
-                    <input type="zipcode" name="zipcode" onChange={handleZipcode}></input>
+                    <input type="zipcode" name="zipcode" onChange={handleChange}></input>
                 </div>
                 <button>Add</button>
             </form>
