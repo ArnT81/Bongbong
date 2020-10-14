@@ -4,7 +4,6 @@ import { Context } from '../../App'
 
 const Item = (props) => {
     const store = useContext(Context)
-    // console.log('props in item', props.user)
 
     const [toggleAddress, setToggleAddress] = useState(false)
     const [toggleContact, setToggleContact] = useState(false)
@@ -12,7 +11,7 @@ const Item = (props) => {
     const deleteUser = (e) => {
         e.preventDefault()
         store.reloadUsers.set(false)
-        const url = "http://localhost:4000/users/" + props.children._id
+        const url = 'http://arnt.hopto.org:4000/users/' + props.children._id
         const otherParams = {
             method: "DELETE",
         }
@@ -41,8 +40,8 @@ const Item = (props) => {
             <h4 onClick={contact} className={styles.toggleText}>Visa Kontaktuppgifter</h4>
             {toggleContact ?
                 <div>
-                    <p>Email: {props.user.email}</p>
                     <p>Telefon: {props.user.phone}</p>
+                    <p>Email: {props.user.email}</p>
                     <p>Hemsida: {props.user.homepage}</p>
                 </div>
                 : null}

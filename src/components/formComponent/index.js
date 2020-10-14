@@ -11,7 +11,7 @@ const FormComponent = () => {
         username: 'The john',
         phone: '031-123123',
         email: 'email@gmail.com',
-        homepage: '',
+        homepage: 'arnt.hopto.org',
         city: 'Göteborg',
         street: 'Drottninggatan 1',
         zipcode: '411 14'
@@ -24,7 +24,7 @@ const FormComponent = () => {
     const addUsert = (e) => {
         e.preventDefault()
         store.reloadUsers.set(false)
-        const url = "http://localhost:4000/users/"
+        const url = 'http://arnt.hopto.org:4000/users'
         const otherParams = {
             method: "POST",
             headers: {
@@ -57,35 +57,35 @@ const FormComponent = () => {
             <form name="Student" onSubmit={addUsert}>
                 <div>
                     <p>Namn</p>
-                    <input type="text" name="name" onChange={handleChange}></input>
+                    <input type="text" name="name" onChange={handleChange} placeholder={value.name}></input>
                 </div>
                 <div>
                     <p>Användarnamn</p>
-                    <input type="text" name="username" onChange={handleChange}></input>
+                    <input type="text" name="username" onChange={handleChange} placeholder={value.username}></input>
                 </div>
                 <div>
                     <p>Telefon</p>
-                    <input type="text" name="phone" onChange={handleChange}></input>
+                    <input type="text" name="phone" onChange={handleChange} placeholder={value.phone}></input>
                 </div>
                 <div>
                     <p>Email</p>
-                    <input type="email" name="email" onChange={handleChange}></input>
+                    <input type="email" name="email" onChange={handleChange} placeholder={value.email}></input>
                 </div>
                 <div>
                     <p>Hemsida</p>
-                    <input type="text" name="homepage" onChange={handleChange}></input>
+                    <input type="text" name="homepage" onChange={handleChange} placeholder={value.homepage}></input>
                 </div>
                 <div>
                     <p>Stad</p>
-                    <input type="text" name="city" onChange={handleChange}></input>
+                    <input type="text" name="city" onChange={handleChange} placeholder={value.city}></input>
                 </div>
                 <div>
                     <p>Gata</p>
-                    <input type="text" name="street" onChange={handleChange}></input>
+                    <input type="text" name="street" onChange={handleChange} placeholder={value.street}></input>
                 </div>
                 <div>
                     <p>Postnummer</p>
-                    <input type="text" name="zipcode" onChange={handleChange}></input>
+                    <input type="text" name="zipcode" onChange={handleChange} placeholder={value.zipcode}></input>
                 </div>
                 <button>Add</button>
             </form>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Sidebar from './components/sidebar/Sidebar'
-import Item from './components/item/item'
-import MainContentWindow from './components/mainContentWindow/MainContentWindow'
+import Sidebar from './components/sidebar'
+import Item from './components/item'
+import MainContentWindow from './components/mainContentWindow'
 import background from './media/summer-sun-warmth-field-9568.jpg'
-import GetUsers from './components/getUsers/GetUsers'
+import GetUsers from './components/getUsers'
 import './App.css';
 
 export const Context = React.createContext({})

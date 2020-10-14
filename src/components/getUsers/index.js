@@ -7,7 +7,7 @@ const GetUsers = () => {
 
     useEffect(() => {
         if (!store.reloadUsers.get) {
-            fetch('http://localhost:4000/users')
+            fetch('http://arnt.hopto.org:4000/users')
                 .then((response) => {
                     return response.json();
                 })
