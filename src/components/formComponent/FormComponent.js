@@ -2,19 +2,22 @@ import React, { useState, useContext } from 'react'
 import styles from '../formComponent/formComponent.module.css'
 import { Context } from '../../App'
 
-const FormComponent = (props) => {
+const FormComponent = () => {
     const store = useContext(Context)
+    const id = store.users.get.length
 
     const [value, setValue] = useState({
-        name: 'Anders Söderberg',
-        email: 'anders_soderberg@hotmail.com',
-        city: 'Vislanda',
-        street: 'Movägen 8',
-        zipcode: '342 50'
+        name: 'John Doe',
+        username: 'The john',
+        phone: '031-123123',
+        email: 'email@gmail.com',
+        homepage: '',
+        city: 'Göteborg',
+        street: 'Drottninggatan 1',
+        zipcode: '411 14'
     })
 
     const handleChange = (e) => {
-        console.log(e.target.name, e.target.value)
         setValue({ ...value, [e.target.name]: e.target.value })
     }
 
@@ -29,8 +32,12 @@ const FormComponent = (props) => {
                 "Content-Type": "application/json;charset=UTF-8"
             },
             body: JSON.stringify({
+                id: id + 1,
                 name: value.name,
+                username: value.username,
+                phone: value.phone,
                 email: value.email,
+                homepage: value.homepage,
                 address: {
                     city: value.city,
                     street: value.street,
@@ -46,27 +53,39 @@ const FormComponent = (props) => {
 
     return (
         <div className={styles.formComponent}>
-            <h4>Add Student</h4>
+            <h4>Lägg till användare</h4>
             <form name="Student" onSubmit={addUsert}>
                 <div>
-                    <p>Name</p>
-                    <input type="name" name="name" onChange={handleChange}></input>
+                    <p>Namn</p>
+                    <input type="text" name="name" onChange={handleChange}></input>
+                </div>
+                <div>
+                    <p>Användarnamn</p>
+                    <input type="text" name="username" onChange={handleChange}></input>
+                </div>
+                <div>
+                    <p>Telefon</p>
+                    <input type="text" name="phone" onChange={handleChange}></input>
                 </div>
                 <div>
                     <p>Email</p>
                     <input type="email" name="email" onChange={handleChange}></input>
                 </div>
                 <div>
-                    <p>City</p>
-                    <input type="city" name="city" onChange={handleChange}></input>
+                    <p>Hemsida</p>
+                    <input type="text" name="homepage" onChange={handleChange}></input>
                 </div>
                 <div>
-                    <p>Street</p>
-                    <input type="street" name="street" onChange={handleChange}></input>
+                    <p>Stad</p>
+                    <input type="text" name="city" onChange={handleChange}></input>
                 </div>
                 <div>
-                    <p>zipcode</p>
-                    <input type="zipcode" name="zipcode" onChange={handleChange}></input>
+                    <p>Gata</p>
+                    <input type="text" name="street" onChange={handleChange}></input>
+                </div>
+                <div>
+                    <p>Postnummer</p>
+                    <input type="text" name="zipcode" onChange={handleChange}></input>
                 </div>
                 <button>Add</button>
             </form>

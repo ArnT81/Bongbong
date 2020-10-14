@@ -1,15 +1,25 @@
 .item {
     position: relative;
-    background: rgb(0,0,0,0.6);
-    width: 280px;
-    height: 170px;
+    background: rgb(0,0,0,0.8);
+    width: 300px;
+    height: 183px;
     padding: 10px;
     margin-left: 20px;
     margin-top: 10px;
     border-radius: 4px;
 }
 
-.item>button {
+.item p {
+    /* color: red; */
+    margin: 2px 0
+}
+
+.toggleText {
+    color: yellow;
+    cursor: pointer;
+}
+
+.deleteButton {
     position: absolute;
     right: 10px;
     bottom: 0px;
