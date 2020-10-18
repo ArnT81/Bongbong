@@ -4,6 +4,7 @@ import { Context } from '../../App'
 
 const FormComponent = () => {
     const store = useContext(Context)
+
     const id = store.users.get.length
 
     const [value, setValue] = useState({
@@ -23,7 +24,6 @@ const FormComponent = () => {
 
     const addUsert = (e) => {
         e.preventDefault()
-        store.reloadUsers.set(false)
         const url = 'http://arnt.hopto.org:4000/users'
         const otherParams = {
             method: "POST",
@@ -49,6 +49,8 @@ const FormComponent = () => {
             .then(data => { return data.json() })
             .then(res => { console.log(res) })
             .catch(error => console.log(error))
+        store.buttonDisabled.set(true)
+        store.reloadUsers.set(true)
     }
 
     return (
@@ -87,7 +89,7 @@ const FormComponent = () => {
                     <p>Postnummer</p>
                     <input type="text" name="zipcode" onChange={handleChange} placeholder={value.zipcode}></input>
                 </div>
-                <button>Add</button>
+                <button disabled={store.buttonDisabled.get}>Add</button>
             </form>
         </div>
     )

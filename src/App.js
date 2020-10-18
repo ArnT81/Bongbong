@@ -10,11 +10,13 @@ export const Context = React.createContext({})
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [reloadUsers, setReloadUsers] = useState(false)
+  const [reloadUsers, setReloadUsers] = useState(true)
+  const [disabled, setDisabled] = useState(false)
 
   const store = {
     users: { get: users, set: setUsers },
-    reloadUsers: { get: reloadUsers, set: setReloadUsers }
+    reloadUsers: { get: reloadUsers, set: setReloadUsers },
+    buttonDisabled: { get: disabled, set: setDisabled }
   }
 
   return (

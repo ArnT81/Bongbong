@@ -10,7 +10,6 @@ const Item = (props) => {
 
     const deleteUser = (e) => {
         e.preventDefault()
-        store.reloadUsers.set(false)
         const url = 'http://arnt.hopto.org:4000/users/' + props.children._id
         const otherParams = {
             method: "DELETE",
@@ -20,6 +19,7 @@ const Item = (props) => {
             .then(data => { return data.json() })
             .then(res => { console.log(res) })
             .catch(error => console.log(error))
+        store.reloadUsers.set(true)
     }
 
     const contact = () => {

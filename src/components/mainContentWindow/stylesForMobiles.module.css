@@ -1,0 +1,7 @@
+.mainContentWindow {
+    position: absolute;
+    top: 67vh;
+    width: 100vw;
+    z-index: 0;
+    box-sizing: border-box;
+}

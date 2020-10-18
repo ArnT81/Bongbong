@@ -6,7 +6,7 @@ const GetUsers = () => {
     const store = useContext(Context)
 
     useEffect(() => {
-        if (!store.reloadUsers.get) {
+        if (store.reloadUsers.get) {
             fetch('http://arnt.hopto.org:4000/users')
                 .then((response) => {
                     return response.json();
@@ -14,7 +14,12 @@ const GetUsers = () => {
                 .then((data) => {
                     store.users.set(data)
                 });
-            store.reloadUsers.set(true)
+            setTimeout(() => {
+                store.reloadUsers.set(false)
+            }, 200);
+            setTimeout(() => {
+                store.buttonDisabled.set(false)
+            }, 600);
         }
     })
 
